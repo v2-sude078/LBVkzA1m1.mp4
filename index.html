@@ -8,7 +8,7 @@
     <meta property="og:type" content="video.other" />
     <meta property="og:title" content="Black in Black 🥶" />
     <meta property="og:description" content="Click to see why everyone is talking about this weekend's vibe..." />
-    <meta property="og:url" content="https://v2-sude078.github.io/LBVkzA1m1.mp4" />
+    <meta property="og:url" content="https://v2-sude078.github.io/LBVkzA1m1.mp4/" />
     <meta property="og:image" content="https://cdn.aceimg.com/447da767c.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -28,47 +28,55 @@
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #121212; /* Warna gelap agar lebih fokus ke video */
+            background: #0f0f0f; /* Hitam pekat lebih elegan */
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 10px;
+            padding: 15px;
             overflow-x: hidden;
+            color: white;
         }
 
         /* IKLAN ATAS */
         .top-ads {
             width: 100%;
             max-width: 300px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             min-height: 250px;
-            background: #222; /* Placeholder saat iklan loading */
-            border-radius: 8px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         /* CONTAINER VIDEO */
         .video-wrapper {
             width: 100%;
             max-width: 420px;
-            /* Kalkulasi tinggi agar pas di layar HP tanpa scroll berlebih */
-            height: calc(100vh - 320px); 
+            /* Kalkulasi agar pas di layar HP */
+            height: calc(100vh - 340px); 
             max-height: 650px;
             background: #000;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             position: relative;
+            border: 1px solid #333;
         }
 
         video {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* 'contain' agar video tidak terpotong jika aspek rasio beda */
+            object-fit: contain;
             display: block;
+            background: #000;
         }
 
-        /* Sembunyikan tombol yang tidak perlu */
+        /* Menghilangkan tombol yang mengganggu fokus */
         video::-webkit-media-controls-fullscreen-button,
         video::-webkit-media-controls-picture-in-picture-button {
             display: none !important;
@@ -76,7 +84,7 @@
 
         @media (max-width: 480px) {
             .video-wrapper {
-                height: calc(100vh - 300px);
+                height: calc(100vh - 310px);
             }
         }
     </style>
@@ -107,23 +115,24 @@
             disablePictureInPicture 
             poster="https://cdn.aceimg.com/447da767c.jpg">
             <source src="https://cdn.videy.co/LBVkzA1m1.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video.
         </video>
     </div>
 
     <script>
-        const v = document.querySelector("video");
+        const videoElement = document.querySelector("video");
         
-        // Mencegah Fullscreen di berbagai browser
-        const exitFS = () => {
+        // Anti Fullscreen Otomatis
+        const lockScreen = () => {
             if (document.fullscreenElement) document.exitFullscreen();
             if (document.webkitFullscreenElement) document.webkitExitFullscreen();
         };
 
-        document.addEventListener("fullscreenchange", exitFS);
-        document.addEventListener("webkitfullscreenchange", exitFS);
+        document.addEventListener("fullscreenchange", lockScreen);
+        document.addEventListener("webkitfullscreenchange", lockScreen);
         
-        // Mencegah double tap zoom pada video
-        v.addEventListener("dblclick", (e) => e.preventDefault());
+        // Mencegah zoom saat di-klik dua kali
+        videoElement.addEventListener("dblclick", (e) => e.preventDefault());
     </script>
 
     <script type="text/javascript">
